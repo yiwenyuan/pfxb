@@ -1,0 +1,15 @@
+server:
+  port: 8080
+  
+spring:
+  datasource:
+    name: pfxb
+    #使用druids数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/pfxb
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    
+mybatis:
+  mapperLocations: classpath:/mybatis/mapper/*.xml
