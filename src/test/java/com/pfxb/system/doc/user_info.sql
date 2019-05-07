@@ -15,3 +15,5 @@ CREATE TABLE `NewTable` (
 PRIMARY KEY (`id`)
 )
 ;
+-- ----------------------------
+INSERT INTO `user_info` VALUES ('1', 'admin', '111111', '管理员', '18', '男', '110', '13222222222', 'admin@qq.com', '1', '1', null, null);
