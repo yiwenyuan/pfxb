@@ -1,4 +1,4 @@
-CREATE TABLE `NewTable` (
+CREATE TABLE `user_info` (
 `id`  varchar(50) NOT NULL COMMENT '主键' ,
 `login_name`  varchar(50) NULL COMMENT '登录名' ,
 `Login_password`  varchar(50) NULL COMMENT '登录密码' ,
