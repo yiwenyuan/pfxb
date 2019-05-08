@@ -80,7 +80,7 @@ input:focus {
 }
 
 .margin_top60 {
-	margin-top: 60px;
+	margin-top: 50px;
 }
 
 .login_btn {
@@ -97,6 +97,13 @@ input:focus {
 .login_btn:hover {
 	background-color: #1e5d5d;
 }
+.loginError {
+	height:5px;
+	color: red;
+	text-align: center;
+	display: block;
+	margin-top: 15px;
+}
 </style>
 <script type="text/javascript" src="easyui/jquery.min.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
@@ -107,13 +114,20 @@ input:focus {
 <div class="cms_login_container">
 	<div class="cms_login_text">欢迎登录沐瑾汐个人门户网站后台</div>
 	<div class="cms_login_table">
-		<form action="">
-			<div class="divBox"><span class="margin_right10">账号</span><input type="text" placeholder="请输入账号"
-					class="cms_login_ipt"></div>
-			<div class="divBox"><span class="margin_right10">密码</span><input type="text" placeholder="请输入密码"
-					class="cms_login_ipt"></div>
+		<form id="loginForm" action="">
+			<div class="divBox">
+				<span class="margin_right10">账号</span>
+				<input id="loginName" name="loginName" type="text" placeholder="请输入账号" class="cms_login_ipt">
+			</div>
+			<div class="divBox">
+				<span class="margin_right10">密码</span>
+				<input id="loginPassword" name="loginPassword" type="text" placeholder="请输入密码" class="cms_login_ipt">
+			</div>
+			<div class="loginError">
+				<span id="loginErrot" th:text="${loginError}"></span>
+			</div>
 			<div class="divBox margin_top60">
-				<button class="login_btn">登录</button>
+				<button id="loginBtn" class="login_btn">登录</button>
 			</div>
 		</form>
 	</div>

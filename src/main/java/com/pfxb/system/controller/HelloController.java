@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pfxb.system.entity.HelloEntity;
 import com.pfxb.system.service.HelloService;
-
+/**
+ * 测试
+ * @author admin
+ *
+ */
 @Controller
 public class HelloController {
 
