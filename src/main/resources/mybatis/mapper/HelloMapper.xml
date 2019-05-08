@@ -9,4 +9,8 @@
 	<select id="findAll" resultMap="hello">
 		select * from hello
 	</select>
+	
+	<select id="getHello" resultMap="hello">
+		select * from hello
+	</select>
 </mapper>

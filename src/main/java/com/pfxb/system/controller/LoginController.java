@@ -1,8 +1,5 @@
 package com.pfxb.system.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +23,7 @@ public class LoginController {
 	 */
 	@RequestMapping("/toLogin")
 	public String toLogin(){
-		return "views/login/login";
+		return "views/login/loginPage";
 	}
 	
 	/**
@@ -42,13 +39,13 @@ public class LoginController {
 			userInfo = loginService.getUserInfo(loginName,loginPassword);
 			if(userInfo == null) {
 				request.setAttribute("loginError", "用户名或密码输入错误，请重新输入");
-				return "views/login/login";
+				return "views/login/loginPage";
 			}else {
-				return "views/login/success";
+				return "views/login/systemPage";
 			}
 		}else {
 			request.setAttribute("loginError", "用户名或密码输入错误，请重新输入");
-			return "views/login/login";
+			return "views/login/loginPage";
 		}
 	}
 }

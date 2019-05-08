@@ -1,5 +1,7 @@
 package com.pfxb.system.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class HelloServiceImpl implements HelloService {
 	@Override
 	public HelloEntity findAll() {
 		return helloDao.findAll();
+	}
+	@Override
+	public List<HelloEntity> getHello() {
+		return helloDao.getHello();
 	}
 
 }

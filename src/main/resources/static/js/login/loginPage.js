@@ -3,6 +3,7 @@ $(function(){
 		loginBtn();
 	});
 	
+	//定时器，3秒清空提示语
 	setTimeout(() => {
 		$("#loginErrot").text("");
 	}, 3000);
