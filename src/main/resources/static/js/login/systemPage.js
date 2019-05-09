@@ -9,7 +9,7 @@ function queryUser(){
 		columns:[[    
 	        {field:'id',title:'id',width:100},    
 	        {field:'name',title:'名称',width:100},    
-	        {field:'age',title:'年龄',width:100,align:'right'}    
+	        {field:'age',title:'年龄',width:100,align:'center'}    
 	    ]] 
 	});
 }
