@@ -1,7 +1,8 @@
 $(function(){
 	//创建数据表格
 //	queryUser();
-	queryUserInfo();
+	queryUserInfo();//查询UserInfo数据事件
+	modification();//修改密码事件
 });
 //测试
 //function queryUser(){
@@ -33,4 +34,59 @@ function queryUserInfo(){
 			{field:'UpdateTime ',title:'更新时间',width:100}
 		]]
 	});
+}
+
+function modification(){
+	$("#modification").click(function(){
+		$('#win').window({    
+		    width:600,    
+		    height:400,    
+		    modal:true   
+		}); 
+//	$("#changePasswordBtn").click(function(){
+//		var changePasswordForm = $("#changePasswordForm");//获取form表单
+//		var loginName = $("#loginName").val();
+//		var loginPassword = $("#loginPassword").val();
+//		var newLoginPassword = $("#newLoginPassword");
+//		if(loginName==null || loginName==""){
+//			alert("登录已过期，请重新登录")
+//			loginForm.attr("action","../toLogin");
+//		}else if(loginPassword==null || loginPassword==""){
+//			alert("原密码不可为空，请重新输入")
+//		}else if(newLoginPassword==null || newLoginPassword==""){
+//			alert("新密码不可为空，请重新输入")
+//		}
+		
+//		$.ajax({
+//			type:"post",
+//			url:'ChangePassword',
+//			data:{
+//				"loginName":loginName,
+//				"loginPassword":loginPassword,
+//				"newLoginPassword":newLoginPassword
+//			},
+//			dataType:"json",
+//			success:function(data){
+//				if(data!=null){
+//					//修改密码成功，跳转登录页面
+//					changePasswordForm.attr("action","../toLogin");
+//					changePasswordForm.sumbit();
+//				}else {
+//					//修改密码失败，跳转主页面
+//					changePasswordForm.attr("action","../loginSuccess");
+//					alert("修改用户名失败，请重新输入");
+//					modification();
+//				}
+//			}
+//			
+			
+//		})
+		
+//		
+//	})	
+//		
+//		
+//		
+//	})
+}
 }

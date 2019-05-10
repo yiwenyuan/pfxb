@@ -8,16 +8,35 @@
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="js/login/systemPage.js"></script>
+<style>
+.cms_login_ipt {
+	height: 30px;
+	width: 290px;
+	padding-left: 5px;
+	border-radius: 5px;
+	outline: none;
+}	
+.margin_right10 {
+	margin-right:5px;
+}
+.divBox {
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	text-align: center;
+}
+</style>
 </head>
 <body style="width:100%;height:100%;margin: 0">
 	<div class="easyui-layout" style="width:100%;height:100%;">
-		<div data-options="region:'north'" style="height: 30px;background-color: #4DFFFF">
-			<div style="color: #00DB00;font-size: 20px;width: 90%;text-align: center;float: left;">欢迎登陆</div>
+		<div data-options="region:'north'" style="height: 45px;background-color: #4DFFFF">
+			<div style="color: #00DB00;font-size: 30px;width: 100%;text-align: center;float: left;">
+			欢迎<span th:text="${loginName}"></span>用户登录</div>
 			<div style="width: 10%;float: right;">
 				<a style="float: right;color: #EA0000;" href="javascript:void(0)" id="mb" class="easyui-menubutton" data-options="menu:'#mm',iconCls:'icon-edit'">编辑</a>   
 				<div id="mm" style="width:150px;">   
-				    <div data-options="iconCls:'icon-edit'">修改密码</div>   
-				    <div data-options="iconCls:'icon-no'">注销</div>   
+				    <div data-options="iconCls:'icon-edit'" id="modification">修改密码</div>   
+				    <div data-options="iconCls:'icon-no'" id="logout">注销</div>   
 				</div>  
 			</div>
 		</div>
@@ -58,6 +77,22 @@
 			<table id="dg"></table>
 		</div>
 	</div>
- 
+	<!-- 修改密码框 -->		
+	<div id="win" title="修改用户密码框" class="divBox">
+		<form id="changePasswordForm" action="">
+			<div>
+				用户名：<span id="loginName" name="loginName" class="margin_right10"  th:text="${loginName}"></span>
+			</div>
+			<div>
+				<span class="margin_right10">原密码:</span>
+				<input id="loginPassword" name="loginPassword" type="text" placeholder="请输入原密码" class="cms_login_ipt"/>
+			</div>
+			<div>
+				<span class="margin_right10">新密码:</span>
+				<input id="newLoginPassword" name="newLoginPassword" type="text" placeholder="请输入新密码" class="cms_login_ipt"/>
+			</div>
+			<button id="changePasswordBtn">确定</button>
+		</form>
+	</div>
 </body>
 </html>
