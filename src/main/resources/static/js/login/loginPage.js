@@ -14,11 +14,20 @@ function loginBtn(){
 	var loginForm = $("#loginForm");//获取form表单
 	var loginName = $("#loginName").val();
 	var loginPassword = $("#loginPassword").val();
+	
+	
 	if(loginName==null || loginName==""){
-		alert("用户名不可为空，请重新输入")
+		alert("用户名不可为空，请重新输入");
+		return false;
+		
 	}else if(loginPassword==null || loginPassword==""){
 		alert("密码不可为空，请重新输入")
+		return false;
+	}else{
+		loginForm.attr("action","../loginSuccess");
+		loginForm.sumbit();
 	}
-	loginForm.attr("action","../loginSuccess");
-	loginForm.sumbit();
+	
+	
+	
 }
