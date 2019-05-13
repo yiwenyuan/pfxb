@@ -34,3 +34,24 @@ function queryUserInfo(){
 		]]
 	});
 }
+
+//注销
+function logout(){
+	window.location.href = "/logout";
+}
+
+//展示用户树
+function userManage(){
+	//折叠商品树
+	$("#productTree").css("display","none");
+	//展示用户树
+	$("#userTree").css("display","block");
+}
+//展示商品树
+function productManage(){
+	//折叠用户树
+	$("#userTree").css("display","none");
+	//展示商品树
+	$("#productTree").css("display","block");
+}
+

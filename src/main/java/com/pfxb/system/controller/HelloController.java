@@ -23,10 +23,10 @@ public class HelloController {
 		return helloEntity;
 	}
 	
-	@RequestMapping("/login")
-	public String toLogin() {
-		return "views/login/loginPage";
-	}
+//	@RequestMapping("/login")
+//	public String toLogin() {
+//		return "views/login/loginPage";
+//	}
 	
 	@RequestMapping("/getHello")
 	@ResponseBody
