@@ -67,6 +67,25 @@
 .icon-more{
 	background:url('icons/more.png') no-repeat center center;
 }
+.icon-staff {
+	background:url('icons/staff.png') no-repeat center center;
+}
+.icon-manager {
+	background:url('icons/manager.png') no-repeat center center;
+}
+.icon-productType {
+	background:url('icons/productType.png') no-repeat center center;
+}
+.icon-product {
+	background:url('icons/product.png') no-repeat center center;
+}
+.icon-work {
+	background:url('icons/work.png') no-repeat center center;
+}
+.icon-money {
+	background:url('icons/money.png') no-repeat center center;
+}
+
 
 
 .icon-mini-add{

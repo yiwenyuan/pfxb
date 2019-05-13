@@ -1,13 +1,10 @@
 $(function(){
-	$("#loginBtn").click(function(){
-		loginBtn();
-	});
-	
-	//定时器，3秒清空提示语
-//	var timeout = setTimeout(() => {
-//		$("#loginErrot").text("");
-//	}, 3000);
-	
+
+	//定时器，清空提示语
+    setInterval(function(){
+        $("#loginErrot").text("");
+    },3000);
+
 });
 
 //登录按钮
@@ -19,15 +16,15 @@ function loginBtn(){
 		type:"post",
 		data:{"loginName":loginName,"loginPassword":loginPassword},
 		success:function(result){
-			if(result != null && result != undefined){
-				if(result.loginError != null){
-					$("#loginErrot").html("<span>"+result.loginError+"</span>");
+            var loginForm = $("#loginForm");//获取form表单
+            if(result != null && result != undefined){
+                if(result.loginError != null){
+                    $("#loginErrot").text(result.loginError);
+				}else{
+                    loginForm.attr("action","../loginSuccess");
+					loginForm.submit();
 				}
 			}
 		}
 	});
-	
-//	var loginForm = $("#loginForm");//获取form表单
-//	loginForm.attr("action","../loginSuccess");
-//	loginForm.sumbit();
 }

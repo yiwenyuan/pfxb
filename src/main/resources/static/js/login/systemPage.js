@@ -1,4 +1,6 @@
 $(function(){
+	//菜单默认全部折叠
+	$("#accordion").accordion("getSelected").panel("collapse");
 	//创建数据表格
 //	queryUser();
 	queryUserInfo();

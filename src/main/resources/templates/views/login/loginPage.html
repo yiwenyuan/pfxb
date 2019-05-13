@@ -92,6 +92,8 @@ input:focus {
 	font-size: 24px;
 	color: white;
 	letter-spacing: 24px;
+	margin: auto;
+	cursor: pointer;
 }
 
 .login_btn:hover {
@@ -123,9 +125,11 @@ input:focus {
 				<span class="margin_right10">密码</span>
 				<input id="loginPassword" name="loginPassword" type="text" placeholder="请输入密码" class="cms_login_ipt">
 			</div>
-			<div class="loginError" id="loginErrot"></div>
+			<div>
+				<span class="loginError" id="loginErrot"></span>
+			</div>
 			<div class="divBox margin_top60">
-				<button id="loginBtn" class="login_btn">登录</button>
+				<div id="loginBtn" class="login_btn" onclick="loginBtn();">登录</div>
 			</div>
 		</form>
 	</div>

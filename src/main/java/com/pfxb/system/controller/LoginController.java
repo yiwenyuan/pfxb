@@ -13,6 +13,9 @@ import com.alibaba.druid.util.StringUtils;
 import com.pfxb.system.entity.UserInfo;
 import com.pfxb.system.service.LoginService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 	@Autowired
@@ -37,7 +40,7 @@ public class LoginController {
 	 */
 	@RequestMapping("/login")
 	@ResponseBody
-	public Map<String,Object> login(String loginName,String loginPassword){
+	public Map<String,Object> login(String loginName, String loginPassword, HttpSession session){
 		Map<String,Object> map = new HashMap<String, Object>();
 		UserInfo userInfo = null;
 		if(!StringUtils.isEmpty(loginName) && !StringUtils.isEmpty(loginPassword)) {
@@ -46,6 +49,7 @@ public class LoginController {
 				map.put("loginError", "用户名或密码输入错误，请重新输入");
 				return map;
 			}else {
+				session.setAttribute("userInfo",userInfo);
 				map.put("loginSuccess", "登录成功");
 				return map;
 			}
@@ -54,7 +58,7 @@ public class LoginController {
 			return map;
 		}
 	}
-	
+
 	/**
 	 * 登录成功，跳转主页面
 	 * @param loginName
@@ -62,23 +66,19 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping("/loginSuccess")
-	public String loginSuccess() {
-		return "views/login/systemPage";
+	public String loginSuccess(HttpSession session,HttpServletRequest request) {
+		UserInfo userInfo = (UserInfo)session.getAttribute("userInfo");
+		if(userInfo != null){
+			session.setAttribute("userInfo",userInfo);
+			return "views/login/systemPage";
+		}else {
+			return "redirect:/toLogin";
+		}
 	}
 	
 	@RequestMapping("/logout")
 	public String logout() {
 		return "redirect:/toLogin";
 	}
-	
-	/**
-	 * 查询UserInfo数据，展示到主页面列表
-	 */
-	@RequestMapping("/getUserInfo")
-	@ResponseBody
-	public List<UserInfo> getUserinfo(){
-		return loginService.getUserinfo();
-	}
-	
-	
+
 }

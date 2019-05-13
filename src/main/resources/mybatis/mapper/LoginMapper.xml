@@ -16,11 +16,14 @@
 		<result property="CreateTime" column="Create_time"/>
 		<result property="UpdateTime" column="Update_time"/>
 	</resultMap>
-	<select id="getUserInfo" resultMap="login">
+	<select id="getUserInfo" parameterType="java.lang.String" resultMap="login">
 		select 
-			login_name,Login_password 
+			*
 		from user_info 
-		where login_name=#{loginName} and Login_password=#{loginPassword}
+		where login_name=#{loginName}
+		and Login_password=#{loginPassword}
+		and state = '1'
+		and description = '1'
 	</select>
 	<select id="getUserinfo" resultMap="login">
 		select * from user_info
