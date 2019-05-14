@@ -12,4 +12,6 @@ public interface LoginDao {
 	UserInfo getUserInfo(String loginName, String loginPassword);
 
 	List<UserInfo> getUserinfo();
+
+	UserInfo queryLoginPassword(String id);
 }

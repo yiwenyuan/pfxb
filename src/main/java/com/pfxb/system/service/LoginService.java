@@ -10,4 +10,6 @@ public interface LoginService {
 
 	List<UserInfo> getUserinfo();
 
+	UserInfo queryLoginPassword(String id);
+
 }

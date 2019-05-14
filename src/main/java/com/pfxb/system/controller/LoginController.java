@@ -1,6 +1,8 @@
 package com.pfxb.system.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -44,7 +46,7 @@ public class LoginController {
 				request.setAttribute("loginError", "用户名或密码输入错误，请重新输入");
 				return "views/login/loginPage";
 			}else {
-				request.setAttribute("loginName", loginName);
+				request.setAttribute("userInfo", userInfo);
 				return "views/login/systemPage";
 			}
 		}else {
@@ -63,13 +65,40 @@ public class LoginController {
 	}
 	
 	
+	/**
+	 * 判断输入原密码和数据库存储原密码是否一致
+	 */
+	@RequestMapping("/queryLoginPassword")
+	@ResponseBody
+	public Map<String,Object> queryLoginPassword(String id,String loginPassword){
+		UserInfo userInfo = null;
+		Map<String,Object> map = new HashMap<String,Object>();
+		if(!(StringUtils.isEmpty(id))) {
+			//根据id查询出原密码
+			userInfo = loginService.queryLoginPassword(id);
+			if(userInfo!=null && !(userInfo.equals(""))) {
+				//判断输入密码和数据库密码是否一致
+				if(userInfo.getLoginPassword().equals(loginPassword)) {
+					map.put("success","成功");
+				}else {
+					map.put("error","密码输入错误，请重新输入");
+				}
+			}else {
+				map.put("error","密码输入错误，请重新输入");
+			}
+		}
+		return null;
+	}
+	
+	
+	
 //	/**
-//	 * 获取用户数据，
+//	 * 修改登录密码
 //	 */
-//	@RequestMapping("/ChangePassword")
+//	@RequestMapping("/changePassword")
 //	@ResponseBody
 //	public List<UserInfo> ChangePassword(String loginName,String loginPassword,
-//			String newLoginPassword ,HttpServletRequest request){
+//			String newLoginPassword1 ,HttpServletRequest request){
 //		UserInfo userInfo = null;
 //		List<UserInfo> list = null;
 //		//根据用户名查询出原密码
@@ -78,10 +107,9 @@ public class LoginController {
 //			//判断用户名查出原密码，和输入原密码是否正确(提高安全性)
 //			if(userInfo.getLoginPassword().equals(loginPassword)) {
 //				//判断输入原密码和新密码是否相同,并且不可为空
-//				if(loginPassword!=newLoginPassword && newLoginPassword!=null && newLoginPassword!="") {
+//				if(loginPassword!=newLoginPassword1 && newLoginPassword1!=null && newLoginPassword1!="") {
 //					//修改密码
-//					list = loginService.ChangePassword(loginName,newLoginPassword);
-//					return list;
+////					return loginService.ChangePassword(loginName,newLoginPassword1);
 //				}else {
 //					//输入新密码和原密码相同不可修改
 //					return list;
@@ -91,7 +119,6 @@ public class LoginController {
 //				return list;
 //			}
 //			
-//			
 //		}
 //		return list;		
 //	}
@@ -99,12 +126,7 @@ public class LoginController {
 	
 	
 	
-	
-//	/**
-//	 * 新密码入库，跳转登录页面
-//	 */
-//	@RequestMapping("/changePassword")
-//	public UserInfo
+
 	
 	
 	

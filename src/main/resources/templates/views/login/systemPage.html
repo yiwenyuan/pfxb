@@ -30,7 +30,7 @@
 <body style="width:100%;height:100%;margin: 0">
 	<div class="easyui-layout" style="width:100%;height:100%;">
 		<div data-options="region:'north'" style="height: 45px;background-color: #4DFFFF">
-			<div style="color: #00DB00;font-size: 30px;width: 100%;text-align: center;float: left;">
+			<div style="color: #00DB00;font-size: 15px;width: 100%;text-align: center;float: left;">
 			欢迎<span th:text="${loginName}"></span>用户登录</div>
 			<div style="width: 10%;float: right;">
 				<a style="float: right;color: #EA0000;" href="javascript:void(0)" id="mb" class="easyui-menubutton" data-options="menu:'#mm',iconCls:'icon-edit'">编辑</a>   
@@ -77,21 +77,27 @@
 			<table id="dg"></table>
 		</div>
 	</div>
-	<!-- 修改密码框 -->		
-	<div id="win" title="修改用户密码框" class="divBox">
+	<!-- 修改密码弹框 -->	
+	<div id="win" title="修改用户密码框" class="divBox" collapsible="false">
 		<form id="changePasswordForm" action="">
+			<input id="id" name="id" type="hidden" readonly  unselectable="on"  th:value="${userInfo.id}" class="cms_login_ipt"/>
 			<div>
-				用户名：<span id="loginName" name="loginName" class="margin_right10"  th:text="${loginName}"></span>
+				<span class="margin_right10">用户名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
+				<input id="loginName" name="loginName" type="text" readonly  unselectable="on"  th:value="${userInfo.loginName}" class="cms_login_ipt"/>
 			</div>
 			<div>
-				<span class="margin_right10">原密码:</span>
-				<input id="loginPassword" name="loginPassword" type="text" placeholder="请输入原密码" class="cms_login_ipt"/>
+				<span class="margin_right10">原密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
+				<input id="loginPassword" name="loginPassword" type="text" placeholder="请输入原密码"  class="cms_login_ipt"/>
 			</div>
 			<div>
-				<span class="margin_right10">新密码:</span>
-				<input id="newLoginPassword" name="newLoginPassword" type="text" placeholder="请输入新密码" class="cms_login_ipt"/>
+				<span class="margin_right10">新密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
+				<input id="newLoginPassword" name="newLoginPassword1" type="text" placeholder="请输入新密码" class="cms_login_ipt"/>
 			</div>
-			<button id="changePasswordBtn">确定</button>
+			<div>
+				<span class="margin_right10">确认新密码&nbsp;&nbsp;:</span>
+				<input id="newLoginPassword" name="newLoginPassword2" type="text" placeholder="请再次输入新密码" class="cms_login_ipt"/>
+			</div>
+			<button id="changePasswordBtn">修改</button>
 		</form>
 	</div>
 </body>

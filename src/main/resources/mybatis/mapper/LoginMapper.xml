@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pfxb.system.dao.LoginDao">
-	<resultMap id="login" type="com.pfxb.system.entity.UserInfo">
+	<resultMap id="userInfo" type="com.pfxb.system.entity.UserInfo">
 		<result property="id" column="Id"/>
 		<result property="loginName" column="login_name"/>
 		<result property="loginPassword" column="Login_password"/>
@@ -16,13 +16,16 @@
 		<result property="CreateTime" column="Create_time"/>
 		<result property="UpdateTime" column="Update_time"/>
 	</resultMap>
-	<select id="getUserInfo" resultMap="login">
+	<select id="getUserInfo" resultMap="userInfo">
 		select 
-			login_name,Login_password 
+			login_name,Login_password,id
 		from user_info 
 		where login_name=#{loginName} and Login_password=#{loginPassword}
 	</select>
-	<select id="getUserinfo" resultMap="login">
+	<select id="getUserinfo" resultMap="userInfo">
 		select * from user_info
+	</select>
+	<select id="queryLoginPassword" resultMap="userInfo">
+		select Login_password from user_info where id=#{id}
 	</select>
 </mapper>

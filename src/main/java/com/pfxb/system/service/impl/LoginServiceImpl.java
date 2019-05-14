@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.druid.util.StringUtils;
 import com.pfxb.system.dao.LoginDao;
 import com.pfxb.system.entity.UserInfo;
 import com.pfxb.system.service.LoginService;
@@ -22,5 +23,13 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public List<UserInfo> getUserinfo() {
 		return logindao.getUserinfo();
+	}
+	//判断输入原密码和数据库存储原密码是否一致
+	@Override
+	public UserInfo queryLoginPassword(String id) {
+		if(!(StringUtils.isEmpty(id))) {
+			return logindao.queryLoginPassword(id);
+		}
+		return null;
 	}
 }
