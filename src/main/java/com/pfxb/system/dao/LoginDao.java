@@ -12,4 +12,5 @@ public interface LoginDao {
 
 	UserInfo getUserInfo(@Param("loginName") String loginName, @Param("loginPassword") String loginPassword);
 
+	UserInfo getloginPassword(@Param("userId") String userId);
 }

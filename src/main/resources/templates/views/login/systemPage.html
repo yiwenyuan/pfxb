@@ -1,135 +1,83 @@
 <!DOCTYPE html>
 <html style="width:100%;height:100%;" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>系统管理</title>
-	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
-	<script type="text/javascript" src="easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_TW.js"></script>
-	<script type="text/javascript" src="js/login/systemPage.js"></script>
+    <meta charset="UTF-8">
+    <title>系统管理</title>
+    <link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+    <script type="text/javascript" src="easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="easyui/locale/easyui-lang-zh_TW.js"></script>
+    <script type="text/javascript" src="js/login/systemPage.js"></script>
 </head>
 <body style="width:100%;height:100%;margin: 0">
-	<div class="easyui-layout" style="width:100%;height:100%;">
-		<div data-options="region:'north',border:false" style="height: 50px;background-color: #0000E3">
-			<div style="color: #FFFFFF;font-size: 25px;width: 70%;text-align: center;line-height:50px;float: left;">欢迎登陆</div>
-			<div style="width: 30%;float: right;">
-				<div style="float: left;color: #FFFFFF;font-size: 20px;line-height: 50px;" th:text="'当前用户：' + ${session.userInfo.loginName}+ '(' +${session.userInfo.name} + ')'">当前用户：</div>
-				<div style="float: right">
-					<div style="float: left;font-size: 15px;color:#ffffff;line-height: 50px;cursor: pointer">
-						<img src="easyui/themes/icons/pencil.png">
-						修改密码
-					</div>
-					<div style="float: right;font-size: 15px;color:#ffffff;line-height: 50px;cursor: pointer">
-						<img src="easyui/themes/icons/no.png">
-						注销登录
-					</div>
-					<!--<a style="color: #FFFFFF;font-size: 20px;" href="javascript:void(0)" id="mb" class="easyui-menubutton" data-options="menu:'#mm'">编辑</a>-->
-					<!--<div id="mm">-->
-						<!--<div data-options="iconCls:'icon-edit'">修改密码</div>-->
-						<!--<div data-options="iconCls:'icon-no'" onclick="logout();">注销</div>-->
-					<!--</div>-->
-				</div>
-			</div>
-		</div>
-		<div data-options="region:'west',split:true" title="功能管理" style="width:17%;">
-			<div id="accordion" class="easyui-accordion">
-				<div title="管理员信息" data-options="iconCls:'icon-manager'">
-					<h3 style="color:#0099FF;">Accordion for jQuery</h3>
-					<p>Accordion is a part of easyui framework for jQuery.
-						It lets you define your accordion component on web page more easily.</p>
-				</div>
-				<div title="员工信息" data-options="iconCls:'icon-staff'" style="padding: 5%">
-					content2
-					fafeettt
-				</div>
-				<div title="商品类别" data-options="iconCls:'icon-productType'" style="padding: 5%">
-					content3
-				</div>
-				<div title="商品明细" data-options="iconCls:'icon-product'" style="padding: 5%">
-					content3
-				</div>
-				<div title="工作报告" data-options="iconCls:'icon-work'" style="padding: 5%">
-					content3
-				</div>
-				<div title="财务报告" data-options="iconCls:'icon-money'" style="padding: 5%">
-					content3
-				</div>
-			</div>
-			<!--<div style="padding-left: 10%;">-->
-				<!--<h3 style="cursor: pointer;margin: 10px 10px 0;" onclick="userManage();">-->
-					<!--<img alt="" src="easyui/themes/icons/man.png">-->
-					<!--用户管理-->
-				<!--</h3>-->
-				<!--<ul id="userTree" class="easyui-tree" style="margin-left:20px;display:none;">   -->
-				    <!--<li data-options="state:'closed'">   -->
-				        <!--<span >管理员用户</span>   -->
-				        <!--<ul>   -->
-				            <!--<li>   -->
-								<!--<span>rr</span>			               -->
-				            <!--</li>   -->
-				            <!--<li>   -->
-				                <!--<span >File 2</span>   -->
-				            <!--</li>   -->
-				            <!--<li>   -->
-				                <!--<span>File 3</span>   -->
-				            <!--</li>   -->
-				        <!--</ul>   -->
-				    <!--</li>   -->
-				    <!--<li data-options="state:'closed'">   -->
-				        <!--<span>员工信息</span>   -->
-				        <!--<ul>-->
-				        	 <!--<li>   -->
-		                        <!--<span>File 12</span>   -->
-		                    <!--</li>   -->
-		                    <!--<li>   -->
-		                        <!--<span>File 13</span>   -->
-		                    <!--</li> -->
-				        <!--</ul>-->
-				    <!--</li>   -->
-				<!--</ul> -->
-			<!--</div>-->
-			<!--<div style="padding-left: 10%;">-->
-				<!--<h3 style="cursor: pointer;margin: 10px 10px 0;" onclick="productManage();">-->
-					<!--<img alt="" src="easyui/themes/icons/tip.png">-->
-					<!--商品管理-->
-				<!--</h3>-->
-				<!--<ul id="productTree" class="easyui-tree" style="margin-left:20px;display:none;">   -->
-				    <!--<li data-options="state:'closed'">   -->
-				        <!--<span >管理员用户</span>   -->
-				        <!--<ul>   -->
-				            <!--<li>   -->
-								<!--<span>rr</span>			               -->
-				            <!--</li>   -->
-				            <!--<li>   -->
-				                <!--<span >File 2</span>   -->
-				            <!--</li>   -->
-				            <!--<li>   -->
-				                <!--<span>File 3</span>   -->
-				            <!--</li>   -->
-				        <!--</ul>   -->
-				    <!--</li>   -->
-				    <!--<li data-options="state:'closed'">   -->
-				        <!--<span>员工信息</span>   -->
-				        <!--<ul>-->
-				        	 <!--<li>   -->
-		                        <!--<span>File 12</span>   -->
-		                    <!--</li>   -->
-		                    <!--<li>   -->
-		                        <!--<span>File 13</span>   -->
-		                    <!--</li> -->
-				        <!--</ul>-->
-				    <!--</li>   -->
-				<!--</ul> -->
-			<!--</div>-->
-		</div>
-		<div data-options="region:'center'" title="主页">
-			<div id="cc" class="easyui-calendar" style="width:80%;height:80%;margin: 5% auto;"></div> 
-<!-- 			<table id="dg"></table> -->
-		</div>
-	</div>
- 
+<div class="easyui-layout" style="width:100%;height:100%;">
+    <div data-options="region:'north',border:false" style="height: 50px;background-color: #0000E3">
+        <div style="color: #FFFFFF;font-size: 25px;width: 70%;text-align: center;line-height:50px;float: left;">
+            欢迎登陆个人系统
+        </div>
+        <div style="width: 30%;float: right;">
+            <div style="float: left;color: #FFFFFF;font-size: 20px;line-height: 50px;"
+                 th:text="'当前用户：' + ${session.userInfo.loginName}+ '(' +${session.userInfo.name} + ')'"></div>
+            <div style="float: right">
+                <div id="changePassword"
+                     style="float: left;font-size: 15px;color:#ffffff;line-height: 50px;cursor: pointer">
+                    <img src="easyui/themes/icons/pencil.png" style="vertical-align: middle">修改密码
+                </div>
+                <div id="logout" style="float: right;font-size: 15px;color:#ffffff;line-height: 50px;cursor: pointer">
+                    <img src="easyui/themes/icons/no.png" style="vertical-align: middle">注销登录
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'west',split:true" title="功能管理" style="width:17%;">
+        <div id="accordion" class="easyui-accordion">
+            <div title="管理员信息" data-options="iconCls:'icon-manager'">
+                <h3 style="color:#0099FF;">Accordion for jQuery</h3>
+                <p>Accordion is a part of easyui framework for jQuery.
+                    It lets you define your accordion component on web page more easily.</p>
+            </div>
+            <div title="员工信息" data-options="iconCls:'icon-staff'" style="padding: 5%">
+                content2
+                fafeettt
+            </div>
+            <div title="商品类别" data-options="iconCls:'icon-productType'" style="padding: 5%">
+                content3
+            </div>
+            <div title="商品明细" data-options="iconCls:'icon-product'" style="padding: 5%">
+                content3
+            </div>
+            <div title="工作报告" data-options="iconCls:'icon-work'" style="padding: 5%">
+                content3
+            </div>
+            <div title="财务报告" data-options="iconCls:'icon-money'" style="padding: 5%">
+                content3
+            </div>
+        </div>
+    </div>
+    <div data-options="region:'center'" title="主页">
+        <div id="cc" class="easyui-calendar" style="width:80%;height:80%;margin: 5% auto;"></div>
+        <div id="win">
+            <input type="hidden" id="userId" th:value="${session.userInfo.id}">
+            <div style="padding: 30px 48px;">
+                <span style="font-size: 20px;">原密码：</span>
+                <span>
+                    <input id="nowLoginPassword" class="easyui-passwordbox" prompt="请输入原密码"
+                           iconWidth="28" style="width:200px;height:34px;">
+                </span>
+                <span id="nowLoginPasErr" style="color:red;display: block;text-align: center"></span>
+            </div>
+            <div style="padding: 30px 48px;">
+                <span style="font-size: 20px;">新密码：</span>
+                <span>
+                    <input id="newLoginPassword" class="easyui-passwordbox" prompt="请输入新密码"
+                           iconWidth="28" style="width:200px;height:34px;">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

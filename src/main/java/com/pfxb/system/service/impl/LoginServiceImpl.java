@@ -18,4 +18,9 @@ public class LoginServiceImpl implements LoginService {
 	public UserInfo getUserInfo(String loginName, String loginPassword) {
 		return logindao.getUserInfo(loginName,loginPassword);
 	}
+
+	@Override
+	public UserInfo getloginPassword(String userId) {
+		return logindao.getloginPassword(userId);
+	}
 }

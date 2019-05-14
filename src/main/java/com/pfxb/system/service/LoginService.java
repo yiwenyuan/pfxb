@@ -8,4 +8,5 @@ public interface LoginService {
 
 	UserInfo getUserInfo(String loginName, String loginPassword);
 
+    UserInfo getloginPassword(String userId);
 }
