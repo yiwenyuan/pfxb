@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ public class LoginController {
 		return "views/login/loginPage";
 	}
 	
+	
+	
+	
 	/**
 	 * 登录成功，跳转主页面
 	 * @param loginName
@@ -38,19 +42,19 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping("/loginSuccess")
-	public String loginSuccess(String loginName,String loginPassword,HttpServletRequest request) {
+	public String loginSuccess(String loginName,String loginPassword,HttpSession session) {
 		UserInfo userInfo = null;
 		if(!StringUtils.isEmpty(loginName) && !StringUtils.isEmpty(loginPassword)) {
 			userInfo = loginService.getUserInfo(loginName,loginPassword);
 			if(userInfo == null) {
-				request.setAttribute("loginError", "用户名或密码输入错误，请重新输入");
+				session.setAttribute("loginError", "用户名或密码输入错误，请重新输入");
 				return "views/login/loginPage";
 			}else {
-				request.setAttribute("userInfo", userInfo);
+				session.setAttribute("userInfo", userInfo);
 				return "views/login/systemPage";
 			}
 		}else {
-			request.setAttribute("loginError", "用户名或密码输入错误，请重新输入");
+			session.setAttribute("loginError", "用户名或密码输入错误，请重新输入");
 			return "views/login/loginPage";
 		}
 	}
@@ -87,7 +91,7 @@ public class LoginController {
 				map.put("error","密码输入错误，请重新输入");
 			}
 		}
-		return null;
+		return map;
 	}
 	
 	

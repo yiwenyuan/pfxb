@@ -56,12 +56,7 @@ function modification(){
 			var loginPassword = $("#loginPassword").val();
 			var newLoginPassword1 = $("#newLoginPassword1");
 			var newLoginPassword2 = $("#newLoginPassword2");
-			if(loginName==null || loginName==""){
-				alert("登录已过期，请重新登录")
-				loginForm.attr("action","../toLogin");
-			}else if(loginPassword==null || loginPassword==""){
-				alert("密码不可为空，请重新输入")
-			}else{
+		
 				//验证输入原密码和用户数据库原密码是否一致
 				$.ajax({
 					type:"post",
@@ -81,7 +76,7 @@ function modification(){
 						}
 					}
 				});
-			}		
+					
 		});
 	});
 }		

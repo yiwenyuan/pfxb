@@ -31,7 +31,9 @@
 	<div class="easyui-layout" style="width:100%;height:100%;">
 		<div data-options="region:'north'" style="height: 45px;background-color: #4DFFFF">
 			<div style="color: #00DB00;font-size: 15px;width: 100%;text-align: center;float: left;">
-			欢迎<span th:text="${loginName}"></span>用户登录</div>
+			欢迎
+			<span th:text="${session.userInfo.loginName}"></span>
+			用户登录</div>
 			<div style="width: 10%;float: right;">
 				<a style="float: right;color: #EA0000;" href="javascript:void(0)" id="mb" class="easyui-menubutton" data-options="menu:'#mm',iconCls:'icon-edit'">编辑</a>   
 				<div id="mm" style="width:150px;">   
@@ -79,11 +81,11 @@
 	</div>
 	<!-- 修改密码弹框 -->	
 	<div id="win" title="修改用户密码框" class="divBox" collapsible="false">
-		<form id="changePasswordForm" action="">
-			<input id="id" name="id" type="hidden" readonly  unselectable="on"  th:value="${userInfo.id}" class="cms_login_ipt"/>
+		<form id="changePasswordForm" action="" method="post">
+			<input id="id" name="id" type="hidden" readonly  unselectable="on"  th:value="${session.userInfo.id}" class="cms_login_ipt"/>
 			<div>
 				<span class="margin_right10">用户名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
-				<input id="loginName" name="loginName" type="text" readonly  unselectable="on"  th:value="${userInfo.loginName}" class="cms_login_ipt"/>
+				<input id="loginName" name="loginName" type="text" readonly  unselectable="on"  th:value="${session.userInfo.loginName}" class="cms_login_ipt"/>
 			</div>
 			<div>
 				<span class="margin_right10">原密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
@@ -97,7 +99,7 @@
 				<span class="margin_right10">确认新密码&nbsp;&nbsp;:</span>
 				<input id="newLoginPassword" name="newLoginPassword2" type="text" placeholder="请再次输入新密码" class="cms_login_ipt"/>
 			</div>
-			<button id="changePasswordBtn">修改</button>
+			<div id="changePasswordBtn">修改</div>
 		</form>
 	</div>
 </body>
