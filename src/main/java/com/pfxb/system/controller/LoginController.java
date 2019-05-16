@@ -32,6 +32,13 @@ public class LoginController {
 		return "views/login/loginPage";
 	}
 	
+	/**
+	 * 注销登录
+	 */
+	@RequestMapping("/toLogout")
+	public String toLogout() {
+		return "views/login/loginPage";
+	}
 	
 	
 	
@@ -64,8 +71,8 @@ public class LoginController {
 	 */
 	@RequestMapping("/getUserInfo")
 	@ResponseBody
-	public List<UserInfo> getUserinfo(){
-		return loginService.getUserinfo();
+	public List<UserInfo> getUserinfoAll(){
+		return loginService.getUserinfoAll();
 	}
 	
 	
@@ -94,44 +101,27 @@ public class LoginController {
 		return map;
 	}
 	
+	@RequestMapping("/toUpdatePassword")
+	public String toUpdatePassword() {
+		return "views/login/updatePassword";
+		
+	}
 	
-	
-//	/**
-//	 * 修改登录密码
-//	 */
-//	@RequestMapping("/changePassword")
-//	@ResponseBody
-//	public List<UserInfo> ChangePassword(String loginName,String loginPassword,
-//			String newLoginPassword1 ,HttpServletRequest request){
-//		UserInfo userInfo = null;
-//		List<UserInfo> list = null;
-//		//根据用户名查询出原密码
-//		userInfo = loginService.getUserInfo(loginName,loginPassword);
-//		if(userInfo!=null && userInfo.equals("")) {
-//			//判断用户名查出原密码，和输入原密码是否正确(提高安全性)
-//			if(userInfo.getLoginPassword().equals(loginPassword)) {
-//				//判断输入原密码和新密码是否相同,并且不可为空
-//				if(loginPassword!=newLoginPassword1 && newLoginPassword1!=null && newLoginPassword1!="") {
-//					//修改密码
-////					return loginService.ChangePassword(loginName,newLoginPassword1);
-//				}else {
-//					//输入新密码和原密码相同不可修改
-//					return list;
-//				}
-//			}else{
-//				//输入原密码和数据库原密码不同不能修改
-//				return list;
-//			}
-//			
-//		}
-//		return list;		
-//	}
-	
-	
-	
-	
-
-	
-	
+	/**
+	 * 修改登录密码入库
+	 */
+	@RequestMapping("/changePassword")
+	public String changePassword(String id,String newLoginPassword1,String newLoginPassword2){
+		if(!(StringUtils.isEmpty(id))) {
+			if(newLoginPassword1.equals(newLoginPassword2)) {
+				//修改密码：新密码入库
+				loginService.changePassword(id,newLoginPassword1);
+				return "redirect:/toLogin";
+			}
+		}else {
+			return "views/login/systemPage";
+		}
+		return null;
+	}
 	
 }

@@ -1,11 +1,13 @@
 $(function(){
-	//创建数据表格
-//	queryUser();
+	  
+	//	queryUser();//创建数据表格
 	queryUserInfo();//查询UserInfo数据事件
-	modification();//修改密码事件
-	$('#loginPassword').blur(function() {
-		modification();
-	 });
+	
+	$("#logout").click(function(){//注销登录
+		window.location.href="../toLogout";
+	});
+	
+	
 });
 //测试
 //function queryUser(){
@@ -18,6 +20,7 @@ $(function(){
 //	    ]] 
 //	});
 //}
+
 function queryUserInfo(){
 	$("#dg").datagrid({
 		url:"getUserInfo",
@@ -39,115 +42,4 @@ function queryUserInfo(){
 	});
 }
 
-//修改密码
-function modification(){
-	$("#modification").click(function(){
-		//修改密码弹框
-		$('#win').window({    
-		    width:600,    
-		    height:400,    
-		    modal:true   
-		});
-		//修改按钮
-		$("#changePasswordBtn").click(function(){
-			var changePasswordForm = $("#changePasswordForm");//获取form表单
-			var id = $("#id").val();
-			var loginName = $("#loginName").val();
-			var loginPassword = $("#loginPassword").val();
-			var newLoginPassword1 = $("#newLoginPassword1");
-			var newLoginPassword2 = $("#newLoginPassword2");
-		
-				//验证输入原密码和用户数据库原密码是否一致
-				$.ajax({
-					type:"post",
-					url:" queryLoginPassword",
-					data:{
-						"id":id,
-						"loginPassword":loginPassword
-					},
-					dataType:"json",
-					success:function(data){
-						if(data.success!=null){
-							//一致
-							inputNewPassword();
-						}else{
-							//不一致
-							alert("输入密码与原密码不一致，请重新输入");
-						}
-					}
-				});
-					
-		});
-	});
-}		
-		
-//输入新密码 inputNewPassword
-function inputNewPassword(){
-	alert(1);
-}
-
-
-//		if((newLoginPassword1==null||newLoginPassword1=="") && (newLoginPassword2==null||newLoginPassword2=="")){
-//			alert("新密码不可为空，请重新输入")
-//		}else if(newLoginPassword1 != newLoginPassword2){
-//			alert("新密码两次输入不一致，请重新输入")
-//		}else{
-//			$.ajax({
-//				type:"post",
-//				url:'changePassword',
-//				data:{
-//					"loginName":loginName,
-//					"loginPassword":loginPassword,
-//					"newLoginPassword1":newLoginPassword1
-//				},
-//				dataType:"json",
-//				success:function(data){
-//					if(data!=null){
-//						//修改密码成功，跳转登录页面
-//						changePasswordForm.attr("action","../toLogin");
-//						changePasswordForm.sumbit();
-//					}else {
-//						//修改密码失败，跳转主页面
-//						changePasswordForm.attr("action","../loginSuccess");
-//						alert("修改密码失败，请重新输入");
-//						modification();
-//					}
-//				}
-//			});
-//		}
-//		if((newLoginPassword1==null||newLoginPassword1=="") && (newLoginPassword2==null||newLoginPassword2=="")){
-//			alert("新密码不可为空，请重新输入")
-//		}else if(newLoginPassword1 != newLoginPassword2){
-//			alert("新密码两次输入不一致，请重新输入")
-//		}else{
-//			$.ajax({
-//				type:"post",
-//				url:'ChangePassword',
-//				data:{
-//					"loginName":loginName,
-//					"loginPassword":loginPassword,
-//					"newLoginPassword1":newLoginPassword1
-//				},
-//				dataType:"json",
-//				success:function(data){
-//					if(data!=null){
-//						//修改密码成功，跳转登录页面
-//						changePasswordForm.attr("action","../toLogin");
-//						changePasswordForm.sumbit();
-//					}else {
-//						//修改密码失败，跳转主页面
-//						changePasswordForm.attr("action","../loginSuccess");
-//						alert("修改密码失败，请重新输入");
-//						modification();
-//					}
-//				}
-//			});
-//		}
-//	});
-//		
-//		
-//		
-//		
-//	});
-//}
 

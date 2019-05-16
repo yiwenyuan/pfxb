@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html style="width:100%;height:100%;" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html style="width: 100%; height: 100%;" lang="en"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>系统管理</title>
-	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
-	<script type="text/javascript" src="easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="js/login/systemPage.js"></script>
+<meta charset="UTF-8">
+<title>系统管理</title>
+<link rel="stylesheet" type="text/css"
+	href="easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+<script type="text/javascript" src="easyui/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/login/systemPage.js"></script>
+<script type="text/javascript" src="js/login/updatePassword.js"></script>
 <style>
 .cms_login_ipt {
 	height: 30px;
@@ -15,92 +18,61 @@
 	padding-left: 5px;
 	border-radius: 5px;
 	outline: none;
-}	
-.margin_right10 {
-	margin-right:5px;
 }
+
+.margin_right10 {
+	margin-right: 5px;
+}
+
 .divBox {
-	height: 50px;
+	height: 30px;
 	width: 100%;
 	line-height: 50px;
 	text-align: center;
 }
 </style>
 </head>
-<body style="width:100%;height:100%;margin: 0">
-	<div class="easyui-layout" style="width:100%;height:100%;">
-		<div data-options="region:'north'" style="height: 45px;background-color: #4DFFFF">
-			<div style="color: #00DB00;font-size: 15px;width: 100%;text-align: center;float: left;">
-			欢迎
-			<span th:text="${session.userInfo.loginName}"></span>
-			用户登录</div>
-			<div style="width: 10%;float: right;">
-				<a style="float: right;color: #EA0000;" href="javascript:void(0)" id="mb" class="easyui-menubutton" data-options="menu:'#mm',iconCls:'icon-edit'">编辑</a>   
-				<div id="mm" style="width:150px;">   
-				    <div data-options="iconCls:'icon-edit'" id="modification">修改密码</div>   
-				    <div data-options="iconCls:'icon-no'" id="logout">注销</div>   
-				</div>  
+<body style="width: 100%; height: 100%; margin: 0">
+	<div class="easyui-layout" style="width: 100%; height: 100%;">
+		<div data-options="region:'north'"
+			style="height: 45px; background-color: #4DFFFF">
+			<div style="color: #00DB00; font-size: 25px; width: 100%; text-align: center; float: left;">
+				欢迎 <span th:text="${session.userInfo.loginName}"></span> 用户登录
+				<div style="width: 20%; float: right;">
+					<a style="float: right; color: #EA0000;" href="javascript:void(0)"
+						id="mb" class="easyui-menubutton"
+						data-options="menu:'#mm',iconCls:'icon-edit'">编辑</a>
+					<div id="mm" style="width: 150px;">
+						<div data-options="iconCls:'icon-edit'" id="modification">修改密码</div>
+						<div data-options="iconCls:'icon-no'" id="logout">注销登录</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div data-options="region:'west',split:true" title="功能管理" style="width:17%;">
+		<div data-options="region:'west',split:true" title="功能管理"
+			style="width: 17%;">
 			<h3 id="userMan" style="padding-left: 10%;">
-				<img alt="" src="easyui/themes/icons/man.png">
-				用户管理
-				<ul class="easyui-tree" >   
-				    <li data-options="state:'closed'">   
-				        <span >管理员用户</span>   
-				        <ul>   
-				            <li>   
-								<span>rr</span>			               
-				            </li>   
-				            <li>   
-				                <span >File 2</span>   
-				            </li>   
-				            <li>   
-				                <span>File 3</span>   
-				            </li>   
-				        </ul>   
-				    </li>   
-				    <li data-options="state:'closed'">   
-				        <span>员工信息</span>   
-				        <ul>
-				        	 <li>   
-				                        <span>File 12</span>   
-				                    </li>   
-				                    <li>   
-				                        <span>File 13</span>   
-				                    </li> 
-				        </ul>
-				    </li>   
-				</ul> 
+				<img alt="" src="easyui/themes/icons/man.png"> 用户管理
+				<ul class="easyui-tree">
+					<li data-options="state:'closed'"><span>管理员用户</span>
+						<ul>
+							<li><span>rr</span></li>
+							<li><span>File 2</span></li>
+							<li><span>File 3</span></li>
+						</ul></li>
+					<li data-options="state:'closed'"><span>员工信息</span>
+						<ul>
+							<li><span>File 12</span></li>
+							<li><span>File 13</span></li>
+						</ul></li>
+				</ul>
 			</h3>
 		</div>
-		<div data-options="region:'center'" title="数据展示">
+		<div data-options="region:'center'" title="主页数据展示">
 			<table id="dg"></table>
+			<!-- 修改密码弹框 -->
+			<div id="win" class="divBox" collapsible="false" ></div>
 		</div>
-	</div>
-	<!-- 修改密码弹框 -->	
-	<div id="win" title="修改用户密码框" class="divBox" collapsible="false">
-		<form id="changePasswordForm" action="" method="post">
-			<input id="id" name="id" type="hidden" readonly  unselectable="on"  th:value="${session.userInfo.id}" class="cms_login_ipt"/>
-			<div>
-				<span class="margin_right10">用户名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
-				<input id="loginName" name="loginName" type="text" readonly  unselectable="on"  th:value="${session.userInfo.loginName}" class="cms_login_ipt"/>
-			</div>
-			<div>
-				<span class="margin_right10">原密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
-				<input id="loginPassword" name="loginPassword" type="text" placeholder="请输入原密码"  class="cms_login_ipt"/>
-			</div>
-			<div>
-				<span class="margin_right10">新密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>
-				<input id="newLoginPassword" name="newLoginPassword1" type="text" placeholder="请输入新密码" class="cms_login_ipt"/>
-			</div>
-			<div>
-				<span class="margin_right10">确认新密码&nbsp;&nbsp;:</span>
-				<input id="newLoginPassword" name="newLoginPassword2" type="text" placeholder="请再次输入新密码" class="cms_login_ipt"/>
-			</div>
-			<div id="changePasswordBtn">修改</div>
-		</form>
 	</div>
 </body>
 </html>

@@ -22,10 +22,16 @@
 		from user_info 
 		where login_name=#{loginName} and Login_password=#{loginPassword}
 	</select>
-	<select id="getUserinfo" resultMap="userInfo">
+	<select id="getUserinfoAll" parameterType="java.lang.String" resultMap="userInfo">
 		select * from user_info
 	</select>
-	<select id="queryLoginPassword" resultMap="userInfo">
+	<select id="queryLoginPassword" parameterType="java.lang.String" resultMap="userInfo">
 		select Login_password from user_info where id=#{id}
 	</select>
+	<!--UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值  -->
+	<update id="changePassword" parameterType="java.lang.String">
+		update user_info set Login_password=#{newLoginPassword1} where id=#{id}
+	</update>
+	
+	
 </mapper>
